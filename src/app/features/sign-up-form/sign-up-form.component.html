@@ -1,0 +1,57 @@
+<h1 class="fed-heading-1">Sign up</h1>
+
+<form class="fed-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+        <fed-input
+            formControlName="firstName"
+            label="First name"
+            [errorMessages]="{
+                required: 'Please fill in your first name'
+            }"
+        ></fed-input>
+    </div>
+
+    <div class="mb-4">
+        <fed-input
+            formControlName="lastName"
+            label="Last name"
+            [errorMessages]="{
+                required: 'Please fill in your last name'
+            }"
+        ></fed-input>
+    </div>
+
+    <div class="mb-4">
+        <fed-input
+            formControlName="email"
+            label="Email"
+            type="email"
+            [errorMessages]="{
+                required: 'Please fill in an e-mail address',
+                validEmail: 'This e-mail address is not valid'
+            }"
+        ></fed-input>
+    </div>
+
+    <div class="mb-6">
+        <fed-input
+            formControlName="password"
+            label="Password"
+            type="password"
+            [errorMessages]="{
+                required: 'Please choose a password',
+                minlength: 'Please fill in at least 8 characters',
+                mustContainLowercaseAndUppercase: 'Password must contain lowercase and uppercase letters',
+                passwordDoesNotContainFirstNameOrLastName: 'Password can not contain first or last name'
+            }"
+        ></fed-input>
+        @if (signUpForm.errors?.['passwordDoesNotContainFirstNameOrLastName']) {
+            <p>Password can not contain first or last name</p>
+        }
+    </div>
+    <div class="flex items-center justify-between">
+        <button class="fed-button" type="submit">Sign Up</button>
+    </div>
+</form>
+
+<p>Full name: {{ fullName }}</p>

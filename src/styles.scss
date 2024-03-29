@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --color-background: #ffffff;
+    --color-background-button: #eeeeee;
+    --color-background-button-hover: #97e8ff;
+    --color-background-disabled: #eeeeee;
+    --color-background-form: #eeeeee;
+    --color-background-error: #ffeded;
+    --color-background-primary: #ffffff;
+    --color-border: #8c8c8c;
+    --color-border-active: #1697c2;
+    --color-border-disabled: #bbbbbb;
+    --color-error: #d21f1e;
+    --color-keyboard-focus: #58595b;
+    --color-text-disabled: #201f1f;
+    --color-text-primary: #373737;
+
+    @media (prefers-color-scheme: dark) {
+        --color-background: #000000;
+        --color-background-button: #eeeeee;
+        --color-background-button-hover: #97e8ff;
+        --color-background-disabled: rgba(255, 255, 255, 0.2);
+        --color-background-form: rgba(255, 255, 255, 0.46);
+        --color-background-error: rgba(255, 237, 237, 0.1);
+        --color-background-primary: #202927;
+        --color-border: rgba(255, 255, 255, 0.6);
+        --color-border-active: rgba(255, 255, 255, 0.87);
+        --color-border-disabled: rgba(255, 255, 255, 0.46);
+        --color-error: #ff5c5c;
+        --color-keyboard-focus: #fdf3e5;
+        --color-text-primary: rgba(255, 255, 255, 0.87);
+        --color-text-disabled: rgba(255, 255, 255, 0.6);
+    }
+}
+
+html,
+body {
+    background: var(--color-background);
+    height: 100%;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}

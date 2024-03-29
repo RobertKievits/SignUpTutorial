@@ -1,0 +1,101 @@
+:host {
+    display: block;
+    margin-bottom: 24px;
+
+    &.ng-dirty.ng-invalid.ng-touched {
+        .fed-input__wrapper {
+            border-color: var(--color-error);
+            background-color: var(--color-background-error);
+            color: var(--color-text-primary);
+        }
+    }
+}
+
+.fed-input {
+    &__wrapper {
+        background-color: var(--color-background-primary);
+        padding: 0 12px;
+        border: 1px solid var(--color-border);
+        border-radius: 5px;
+        color: var(--color-text-primary);
+        font-size: 16px;
+        line-height: 24px;
+        height: 48px;
+        vertical-align: middle;
+
+        flex: 1;
+        cursor: text;
+        display: flex;
+        padding: 0 12px 0 12px;
+        position: relative;
+
+        &:has(.fed-input__input:focus) {
+            border-color: var(--color-border-active);
+            border-width: 2px;
+        }
+
+        &:has(.fed-input__input:focus-visible) {
+            box-shadow:
+                0 0 0 3px,
+                var(--color-keyboard-focus);
+        }
+
+        &:has(.fed-input__input:hover:not(:disabled)) {
+            border-color: var(--color-border-active);
+        }
+
+        &:has(.fed-input__input:disabled) {
+            border-color: var(--color-border-disabled);
+            background-color: var(--color-background-disabled);
+            color: var(--color-text-disabled);
+            font-weight: normal;
+        }
+    }
+
+    &__label {
+        color: var(--color-text-primary);
+        left: calc(12px + 1px);
+        position: absolute;
+        transition: all 0.2s ease-in-out;
+        display: block;
+        top: 12px;
+        pointer-events: none;
+        white-space: nowrap;
+        overflow: hidden;
+        z-index: 100;
+
+        // Label style when the input is focussed or, has a value
+        &:has(~ .fed-input__input[value]:not([value=''])),
+        &:has(~ .fed-input__input:focus) {
+            display: inline;
+            font-size: 12px;
+            top: 2px;
+        }
+
+        &:has(~ .fed-input__input:disabled) {
+            color: var(--color-text-disabled);
+        }
+    }
+
+    &__input {
+        background: none;
+        border: none;
+        color: var(--color-text-primary);
+        flex: 1;
+        outline: none;
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    &__error-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0 0 6px;
+    }
+
+    &__error-message {
+        color: var(--color-error);
+        font-size: 12px;
+        margin-top: 6px;
+    }
+}

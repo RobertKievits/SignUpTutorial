@@ -1,0 +1,23 @@
+<label class="fed-input__wrapper">
+    <span class="fed-input__label" data-testid="label">{{ label }}</span>
+    <input
+        #input
+        class="fed-input__input"
+        data-testid="input"
+        [attr.disabled]="isDisabled ? isDisabled : null"
+        [attr.type]="type"
+        [attr.aria-invalid]="control ? control.invalid : null"
+        [attr.value]="value"
+        [(ngModel)]="value"
+        (input)="onChange(value)"
+        (blur)="onTouched()"
+    />
+</label>
+
+@if (errors) {
+    <ul class="fed-input__error-list">
+        @for (error of errors; track error) {
+            <li class="fed-input__error-message" role="alert">{{ error }}</li>
+        }
+    </ul>
+}
