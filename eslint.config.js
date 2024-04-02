@@ -15,5 +15,5 @@ module.exports = [
     eslintConfigTypescript,
     eslintPluginPrettierRecommended,
     eslintConfigBestPractices,
-    { ignores: ['node_modules/**', '.angular', 'dist'] }
+    { ignores: ['node_modules/**', '.angular/**', '.vscode/**', 'coverage/**', 'dist/**', 'playwright-report/**'] }
 ];

@@ -1,0 +1,12 @@
+{
+    "defaults": {
+        "timeout": 2000,
+        "reporters": [
+            "cli",
+            ["json", { "fileName": "./coverage/a11y/results.json" }]
+        ]
+    },
+    "urls": [
+        "http://localhost:4200"
+    ]
+}
