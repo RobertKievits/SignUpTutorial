@@ -19,7 +19,12 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": ["ES2022", "dom"]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@components": ["./src/app/shared/components/index.ts"],
+      "@features": ["./src/app/features/index.ts"],
+      "@validators": ["./src/app/shared/validators/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

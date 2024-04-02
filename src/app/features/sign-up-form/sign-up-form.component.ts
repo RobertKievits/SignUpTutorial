@@ -1,12 +1,13 @@
+import { InputComponent, ToastEvents, ToastService } from '@components';
+import { mustContainLowercaseAndUppercase, passwordDoesNotContainFirstNameOrLastName, validEmail } from '@validators';
+
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { mustContainLowercaseAndUppercase, passwordDoesNotContainFirstNameOrLastName, validEmail } from '../../shared/validators';
-import { SignupFormGroup } from './interfaces/sign-up-form.interface';
-import { InputComponent } from '../../shared/components';
-import { SignUpService } from './services/sign-up.service';
-import { SignUpData } from './interfaces';
 import { take } from 'rxjs';
+
+import { SignupFormGroup } from './interfaces';
+import { SignUpService } from './services';
 
 @Component({
     selector: 'fed-sign-up-form',
@@ -29,7 +30,10 @@ export class SignUpFormComponent implements OnInit {
 
     private destroyRef = inject(DestroyRef);
 
-    constructor(private signUpService: SignUpService) {}
+    constructor(
+        private toastService: ToastService,
+        private signUpService: SignUpService
+    ) {}
 
     /**
      * Angular lifecycle hook.
@@ -40,7 +44,7 @@ export class SignUpFormComponent implements OnInit {
     }
 
     /**
-     * Submit form
+     * Submit form and show toast on error or success
      */
     public onSubmit(): void {
         this.validateForm();
@@ -54,18 +58,20 @@ export class SignUpFormComponent implements OnInit {
                 })
                 .pipe(take(1))
                 .subscribe({
-                    next: () => {},
-                    // this.toastService.showToast({
-                    //     message: 'Your sign-up data was successfully submitted',
-                    //     type: ToastEvents.SUCCESS,
-                    //     title: 'Sign-up submitted'
-                    // }),
-                    error: () => {}
-                    // this.toastService.showToast({
-                    //     message: 'Sing-up went wrong. Please try agin later',
-                    //     type: ToastEvents.ERROR,
-                    //     title: 'Something went wrong'
-                    // })
+                    next: () => {
+                        this.toastService.showToast({
+                            message: 'Your sign-up data was successfully submitted',
+                            type: ToastEvents.SUCCESS,
+                            title: 'Sign-up submitted'
+                        });
+                    },
+                    error: () => {
+                        this.toastService.showToast({
+                            message: 'Sing-up went wrong. Please try agin later',
+                            type: ToastEvents.ERROR,
+                            title: 'Something went wrong'
+                        });
+                    }
                 });
         }
     }
@@ -74,23 +80,26 @@ export class SignUpFormComponent implements OnInit {
      * Create base sign up form component
      */
     private createForm(): void {
-        this.signUpForm = new FormGroup(
-            {
-                firstName: new FormControl('', [Validators.required]),
-                lastName: new FormControl('', [Validators.required]),
-                email: new FormControl('', [Validators.required, validEmail()]),
-                password: new FormControl('', [Validators.required, Validators.minLength(8), mustContainLowercaseAndUppercase()])
-            },
-            {
-                validators: [passwordDoesNotContainFirstNameOrLastName()]
-            }
-        );
+        this.signUpForm = new FormGroup({
+            firstName: new FormControl('', [Validators.required]),
+            lastName: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.required, validEmail()]),
+            password: new FormControl('', [
+                Validators.required,
+                Validators.minLength(8),
+                mustContainLowercaseAndUppercase(),
+                passwordDoesNotContainFirstNameOrLastName()
+            ])
+        });
 
         this.signUpForm.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
             this.fullName = `${value.firstName} ${value.lastName}`;
         });
     }
 
+    /**
+     * Set all form controls to touched and dirty state
+     */
     private validateForm(): void {
         this.signUpForm.markAllAsTouched();
         Object.keys(this.signUpForm.controls).forEach((key) => {

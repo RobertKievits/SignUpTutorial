@@ -1,6 +1,7 @@
 import { Component, Input, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NgControl } from '@angular/forms';
 import { noop } from 'rxjs';
+
 import { InputType } from './input.model';
 
 @Component({
@@ -49,6 +50,7 @@ export class InputComponent implements ControlValueAccessor {
     /**
      * Handle change of input
      */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public onInput(event: Event): void {
         this.onChange(this.value);
     }
@@ -64,15 +66,9 @@ export class InputComponent implements ControlValueAccessor {
             return null;
         }
 
-        console.log();
-
         return Object.keys(errors)
             .map((error) => this.errorMessages[error])
             .filter((message) => message !== undefined);
-
-        // const errorKey = Object.keys(errors).find((error) => this.messages[error]) || 'incorrect';
-        // const params = errors[errorKey] ? { ...errors[errorKey] } : {};
-        // return this.messages[errorKey] ? this.contentService.getInterpolated(this.messages[errorKey], params) : this.messages.incorrect;
     }
 
     /**

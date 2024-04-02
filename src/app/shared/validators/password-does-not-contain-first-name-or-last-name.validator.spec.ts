@@ -22,23 +22,23 @@ describe('PasswordDoesNotContainFirstNameOrLastName Validator', () => {
     });
 
     it('should be valid if nothing filled in', () => {
-        expect(validator(form)).toEqual(null);
+        expect(validator(passwordControl)).toEqual(null);
     });
 
     it('should be valid if only first name filled in', () => {
         firstNameControl.setValue('Test');
-        expect(validator(form)).toEqual(null);
+        expect(validator(passwordControl)).toEqual(null);
     });
 
     it('should be valid if only last name filled in', () => {
         firstNameControl.setValue('Test');
-        expect(validator(form)).toEqual(null);
+        expect(validator(passwordControl)).toEqual(null);
     });
 
     it('should be invalid if password contains first name', () => {
         firstNameControl.setValue('Test');
         passwordControl.setValue('Testabc');
-        expect(validator(form)).toEqual({
+        expect(validator(passwordControl)).toEqual({
             passwordDoesNotContainFirstNameOrLastName: true
         });
     });
@@ -46,7 +46,7 @@ describe('PasswordDoesNotContainFirstNameOrLastName Validator', () => {
     it('should be invalid if password contains last name', () => {
         lastNameControl.setValue('Test');
         passwordControl.setValue('Testabc');
-        expect(validator(form)).toEqual({
+        expect(validator(passwordControl)).toEqual({
             passwordDoesNotContainFirstNameOrLastName: true
         });
     });

@@ -15,7 +15,7 @@
 </label>
 
 @if (errors) {
-    <ul class="fed-input__error-list">
+    <ul class="fed-input__error-list" data-testid="errors">
         @for (error of errors; track error) {
             <li class="fed-input__error-message" role="alert">{{ error }}</li>
         }

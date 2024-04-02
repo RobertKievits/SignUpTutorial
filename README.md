@@ -1,6 +1,6 @@
 # SignUpTutorial
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+Basic sign up form built with Angular 17.3.2
 
 ## Development server
 
@@ -18,10 +18,26 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Linting
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `npm run lint` to execute linting. If you run `npm run lint:fix` eslint will automatically fix all possible errors that can be automatically fixed.
+
+## Prettier
+
+This project uses prettier for code consistency. Run `npm run format` to auto format all files according to prettier formatting. If you are a contributor make sure to use the [IDE integration](https://prettier.io/docs/en/editors.html) to auto format while coding.
 
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Technical choices
+
+A description of technical choices:
+
+## Styling
+
+Last time I built this I used tailwind, but decided to use custom styling this time. As an added bonus I used css variables to add a (simple) darkmode.
+
+## Testing
+
+I decided to use Karma as a unit testing framework. Jest was also an option since I am currently working with jest tests in my current project, but Karma is the standard when generating a new Angular project. Therefore, I stuck with that.

@@ -9,11 +9,14 @@
     --color-background-form: #eeeeee;
     --color-background-error: #ffeded;
     --color-background-primary: #ffffff;
+    --color-background-toast-error: #ffeded;
+    --color-background-toast-success: #f2fbf3;
     --color-border: #8c8c8c;
     --color-border-active: #1697c2;
     --color-border-disabled: #bbbbbb;
     --color-error: #d21f1e;
     --color-keyboard-focus: #58595b;
+    --color-success: #00980e;
     --color-text-disabled: #201f1f;
     --color-text-primary: #373737;
 
@@ -25,11 +28,15 @@
         --color-background-form: rgba(255, 255, 255, 0.46);
         --color-background-error: rgba(255, 237, 237, 0.1);
         --color-background-primary: #202927;
+        --color-background-toast-error: rgba(255, 237, 237, 0.1);
+        --color-background-toast-success: rgba(242, 251, 243, 0.1);
         --color-border: rgba(255, 255, 255, 0.6);
         --color-border-active: rgba(255, 255, 255, 0.87);
         --color-border-disabled: rgba(255, 255, 255, 0.46);
+        --color-border-error: #ff5c5c;
         --color-error: #ff5c5c;
         --color-keyboard-focus: #fdf3e5;
+        --color-success: #00980e;
         --color-text-primary: rgba(255, 255, 255, 0.87);
         --color-text-disabled: rgba(255, 255, 255, 0.6);
     }

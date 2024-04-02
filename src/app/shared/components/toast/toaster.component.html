@@ -1,0 +1,5 @@
+<div class="toaster fixed top-3 right-3">
+    @for (toast of currentToasts; let i = $index; track i) {
+        <app-toast [toast]="toast" (dispose)="dispose(i)"></app-toast>
+    }
+</div>

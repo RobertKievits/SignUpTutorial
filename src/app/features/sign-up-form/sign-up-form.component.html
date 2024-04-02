@@ -1,7 +1,7 @@
 <h1 class="fed-heading-1">Sign up</h1>
 
 <form class="fed-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-    <div class="mb-4">
+    <div class="fed-input__wrapper">
         <fed-input
             formControlName="firstName"
             label="First name"
@@ -11,7 +11,7 @@
         ></fed-input>
     </div>
 
-    <div class="mb-4">
+    <div class="fed-input__wrapper">
         <fed-input
             formControlName="lastName"
             label="Last name"
@@ -21,7 +21,7 @@
         ></fed-input>
     </div>
 
-    <div class="mb-4">
+    <div class="fed-input__wrapper">
         <fed-input
             formControlName="email"
             label="Email"
@@ -33,7 +33,7 @@
         ></fed-input>
     </div>
 
-    <div class="mb-6">
+    <div class="fed-input__wrapper">
         <fed-input
             formControlName="password"
             label="Password"
@@ -45,12 +45,9 @@
                 passwordDoesNotContainFirstNameOrLastName: 'Password can not contain first or last name'
             }"
         ></fed-input>
-        @if (signUpForm.errors?.['passwordDoesNotContainFirstNameOrLastName']) {
-            <p>Password can not contain first or last name</p>
-        }
     </div>
     <div class="flex items-center justify-between">
-        <button class="fed-button" type="submit">Sign Up</button>
+        <button class="fed-button" type="submit" data-testid="submit-button">Sign Up</button>
     </div>
 </form>
 

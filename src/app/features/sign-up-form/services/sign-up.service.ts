@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
-import { SignUpData } from '../interfaces';
+import { SignUpData, ThumbnailUrl } from '../interfaces';
 
 @Injectable()
 export class SignUpService {
@@ -14,8 +14,22 @@ export class SignUpService {
      * @returns Observable<void>
      */
     public signUp(signUpData: SignUpData): Observable<void> {
-        return this.http.post<void>('https://demo-api.now.sh/users', {
-            ...signUpData
-        });
+        return this.getThumbnail(signUpData.lastName).pipe(
+            switchMap((thumbnailUrl: ThumbnailUrl) => {
+                return this.http.post<void>('https://jsonplaceholder.typicode.com/users', {
+                    ...signUpData,
+                    thumbnailUrl
+                });
+            })
+        );
+    }
+
+    /**
+     * Get thumbnail from last name
+     * @param {string} lastName
+     * @returns Observable<string>
+     */
+    private getThumbnail(lastName: string): Observable<ThumbnailUrl> {
+        return this.http.get<ThumbnailUrl>(`https://jsonplaceholder.typicode.com/photos/${lastName.length}`);
     }
 }

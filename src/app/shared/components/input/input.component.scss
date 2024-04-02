@@ -1,6 +1,5 @@
 :host {
     display: block;
-    margin-bottom: 24px;
 
     &.ng-dirty.ng-invalid.ng-touched {
         .fed-input__wrapper {
@@ -13,20 +12,18 @@
 
 .fed-input {
     &__wrapper {
-        background-color: var(--color-background-primary);
-        padding: 0 12px;
-        border: 1px solid var(--color-border);
-        border-radius: 5px;
         color: var(--color-text-primary);
         font-size: 16px;
         line-height: 24px;
         height: 48px;
         vertical-align: middle;
+        background-color: var(--color-background-primary);
+        border: 1px solid var(--color-border);
+        border-radius: 5px;
 
         flex: 1;
         cursor: text;
         display: flex;
-        padding: 0 12px 0 12px;
         position: relative;
 
         &:has(.fed-input__input:focus) {
@@ -80,11 +77,12 @@
     &__input {
         background: none;
         border: none;
+        border-radius: 5px;
         color: var(--color-text-primary);
         flex: 1;
         outline: none;
         width: 100%;
-        padding-top: 20px;
+        padding: 20px 12px 0 12px;
     }
 
     &__error-list {

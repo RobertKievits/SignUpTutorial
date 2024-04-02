@@ -1,33 +1,33 @@
-"use strict";
+'use strict';
 
 module.exports = {
-  $schema: "http://json.schemastore.org/prettierrc",
-  useTabs: false,
-  printWidth: 140,
-  singleQuote: true,
-  tabWidth: 4,
-  overrides: [
-    {
-      files: "*.html",
-      options: {
-        parser: "angular",
-      },
-    },
-    {
-      files: ["*.ts", "*.js"],
-      options: {
-        semi: true,
-        trailingComma: "none",
-        singleQuote: true,
-      },
-    },
-    {
-      files: ["*.json", "*.jsonc"],
-      options: {
-        tabWidth: 2,
-        trailingComma: "none",
-      },
-    },
-  ],
-  endOfLine: "lf",
+    $schema: 'http://json.schemastore.org/prettierrc',
+    useTabs: false,
+    printWidth: 140,
+    singleQuote: true,
+    tabWidth: 4,
+    overrides: [
+        {
+            files: '*.html',
+            options: {
+                parser: 'angular'
+            }
+        },
+        {
+            files: ['*.ts', '*.js'],
+            options: {
+                semi: true,
+                trailingComma: 'none',
+                singleQuote: true
+            }
+        },
+        {
+            files: ['*.json', '*.jsonc'],
+            options: {
+                tabWidth: 2,
+                trailingComma: 'none'
+            }
+        }
+    ],
+    endOfLine: 'lf'
 };
